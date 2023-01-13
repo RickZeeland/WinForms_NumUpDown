@@ -1,9 +1,7 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
+using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
 namespace Griffid.Customization
 {
@@ -12,11 +10,7 @@ namespace Griffid.Customization
     /// </summary>
     public class CustomUpDown : Control
     {
-        private TextBox textBox;
-
-        private Button buttonUp;
-
-        private Button buttonDown;
+        public int Value { get; set; }
 
         public int Maximum { get; set; } = 100;
 
@@ -25,6 +19,12 @@ namespace Griffid.Customization
         public enum ButtonDisplay { Arrows, PlusMinus };
 
         public ButtonDisplay ButtonStyle { get; set; }
+
+        private TextBox textBox;
+
+        private Button buttonUp;
+
+        private Button buttonDown;
 
         /// <summary>
         /// Control height is determined by Font size.
@@ -41,7 +41,7 @@ namespace Griffid.Customization
         public CustomUpDown()
         {
             textBox = new TextBox();
-            textBox.Text = "0";
+            this.Value = Minimum;
             textBox.KeyPress += this.TextBox_KeyPress;
             this.Controls.Add(textBox);
             buttonUp = new Button();
@@ -53,7 +53,7 @@ namespace Griffid.Customization
         /// <summary>
         /// Allow only digits and backspace key.
         /// </summary>
-        private void TextBox_KeyPress(object? sender, KeyPressEventArgs e)
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back));
         }
@@ -106,6 +106,7 @@ namespace Griffid.Customization
             buttonDown.Size = buttonUp.Size;
             buttonUp.Location = new Point(this.Width - (2 * buttonHeight), 0);
             buttonDown.Location = new Point(this.Width - buttonHeight, 0);
+            textBox.Text = this.Value.ToString();
             base.OnPaint(e);
         }
 
@@ -115,7 +116,7 @@ namespace Griffid.Customization
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event args.</param>
-        private void ButtonUpClick(object? sender, MouseEventArgs e)
+        private void ButtonUpClick(object sender, MouseEventArgs e)
         {
             int delayMs = 300;
 
@@ -123,6 +124,7 @@ namespace Griffid.Customization
             {
                 if (this.AddValue(1))
                 {
+                    Application.DoEvents();
                     Thread.Sleep(delayMs);
                     delayMs = 100;
                 }
@@ -137,7 +139,7 @@ namespace Griffid.Customization
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event args.</param>
-        private void ButtonDownClick(object? sender, MouseEventArgs e)
+        private void ButtonDownClick(object sender, MouseEventArgs e)
         {
             int delayMs = 300;
 
@@ -145,6 +147,7 @@ namespace Griffid.Customization
             {
                 if (this.AddValue(-1))
                 {
+                    Application.DoEvents();
                     Thread.Sleep(delayMs);
                     delayMs = 100;
                 }
@@ -161,18 +164,30 @@ namespace Griffid.Customization
         {
             if (string.IsNullOrEmpty(this.textBox.Text))
             {
-                this.textBox.Text = "0";
+
+                this.Value = this.Minimum;
+                this.textBox.Text = this.Value.ToString(); 
                 return false;
             }
 
-            int num = Convert.ToInt32(this.textBox.Text) + value;
+            int num = this.Value + value;
 
-            if (num >= Minimum && num <= Maximum)
+            if (num < Minimum)
             {
-                this.textBox.Text = num.ToString();
+                this.Value = this.Minimum;
+            }
+            else if (num > Maximum)
+            {
+                this.Value = this.Maximum;
+            }
+            else
+            {
+                this.Value = num;
+                this.textBox.Text = this.Value.ToString();
                 return true;
             }
 
+            this.textBox.Text = this.Value.ToString();
             return false;
         }
     }
