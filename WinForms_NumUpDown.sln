@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms_NumUpDown", "WinForms_NumUpDown.csproj", "{306256D3-CF50-405F-BFAE-D67E46338FBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{306256D3-CF50-405F-BFAE-D67E46338FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306256D3-CF50-405F-BFAE-D67E46338FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306256D3-CF50-405F-BFAE-D67E46338FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306256D3-CF50-405F-BFAE-D67E46338FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96B84DE3-BDCB-46F8-8DEE-216C5AA13A53}
+	EndGlobalSection
+EndGlobal
