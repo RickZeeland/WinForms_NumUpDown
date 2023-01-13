@@ -15,5 +15,11 @@ namespace WinForms_NumUpDown
             var fontsize = (float)this.numericUpDownFontsize.Value;
             this.Font = new Font(this.Font.FontFamily, fontsize);
         }
+
+        private void customUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            var fontsize = (float)this.customUpDown1.Value;
+            this.Font = new Font(this.Font.FontFamily, fontsize);
+        }
     }
 }

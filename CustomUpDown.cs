@@ -10,6 +10,8 @@ namespace Griffid.Customization
     /// </summary>
     public class CustomUpDown : Control
     {
+        public event EventHandler ValueChanged;
+
         public int Value { get; set; }
 
         public int Maximum { get; set; } = 100;
@@ -131,6 +133,8 @@ namespace Griffid.Customization
 
                 Application.DoEvents();
             }
+
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -154,6 +158,8 @@ namespace Griffid.Customization
 
                 Application.DoEvents();
             }
+
+            ValueChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

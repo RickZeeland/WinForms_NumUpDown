@@ -86,12 +86,14 @@
             // 
             this.customUpDown1.ButtonStyle = Griffid.Customization.CustomUpDown.ButtonDisplay.Arrows;
             this.customUpDown1.Location = new System.Drawing.Point(79, 20);
-            this.customUpDown1.Maximum = 100;
-            this.customUpDown1.Minimum = 0;
+            this.customUpDown1.Maximum = 20;
+            this.customUpDown1.Minimum = 5;
             this.customUpDown1.Name = "customUpDown1";
             this.customUpDown1.Size = new System.Drawing.Size(91, 21);
             this.customUpDown1.TabIndex = 0;
             this.customUpDown1.Text = "customUpDown1";
+            this.customUpDown1.Value = 9;
+            this.customUpDown1.ValueChanged += new System.EventHandler(this.customUpDown1_ValueChanged);
             // 
             // groupBox1
             // 
