@@ -29,6 +29,8 @@ namespace WinForms_NumUpDown
 
         public ButtonDisplay ButtonStyle { get; set; }
 
+        private Label label1;
+
         private TextBox textBox;
 
         private Button buttonUp;
@@ -51,6 +53,9 @@ namespace WinForms_NumUpDown
         public CustomUpDown()
         {
             ForeColor = Color.Gray;
+            label1 = new Label();
+            label1.Text = Text;
+            Controls.Add(label1);
             textBox = new TextBox();
             Value = Minimum;
             textBox.KeyPress += TextBox_KeyPress;
@@ -62,11 +67,24 @@ namespace WinForms_NumUpDown
         }
 
         /// <summary>
-        /// Allow only digits and backspace key.
+        /// Allow only digits, Enter and Backspace key.
         /// </summary>
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                this.AddValue(0);
+                e.Handled = false;
+                ValueChanged?.Invoke(this, e);
+            }
+            else if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
         private void AddButtonUp()
@@ -90,7 +108,7 @@ namespace WinForms_NumUpDown
         }
 
         /// <summary>
-        /// Custom OnPaint() draws TextBox and two Buttons.
+        /// Custom OnPaint() draws Label, TextBox and two Buttons.
         /// </summary>
         /// <param name="e">The PaintEventArgs</param>
         protected override void OnPaint(PaintEventArgs e)
@@ -106,14 +124,28 @@ namespace WinForms_NumUpDown
                 buttonDown.Text = "▼";
             }
 
+            textBox.Text = Value.ToString();
             int buttonHeight = textBox.Height - 2;
-            textBox.Width = Width - 2 * buttonHeight;
-            textBox.Location = new Point(0, 0);
+
+            if (string.IsNullOrEmpty(Text))
+            {
+                label1.Visible = false;
+                textBox.Width = Width - 2 * buttonHeight;
+                textBox.Location = new Point(0, 0);
+            }
+            else
+            {
+                textBox.Width = (int)(Math.Max(3, textBox.Text.Length) * Font.Size);
+                label1.Text = Text;
+                label1.Width = Width - textBox.Width - 2 * buttonHeight;
+                label1.Location = new Point(0, 2);
+                textBox.Location = new Point(label1.Width, 0);
+            }
+
             buttonUp.Size = new Size(buttonHeight, buttonHeight);
             buttonDown.Size = buttonUp.Size;
             buttonUp.Location = new Point(Width - 2 * buttonHeight, 0);
             buttonDown.Location = new Point(Width - buttonHeight, 0);
-            textBox.Text = Value.ToString();
             base.OnPaint(e);
         }
 
@@ -181,19 +213,18 @@ namespace WinForms_NumUpDown
                 return false;
             }
 
-            int num = Value + value;
+            Value = Convert.ToInt32(textBox.Text) + value;
 
-            if (num < Minimum)
+            if (Value < Minimum)
             {
                 Value = Minimum;
             }
-            else if (num > Maximum)
+            else if (Value > Maximum)
             {
                 Value = Maximum;
             }
             else
             {
-                Value = num;
                 textBox.Text = Value.ToString();
                 return true;
             }

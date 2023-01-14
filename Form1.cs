@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace WinForms_NumUpDown
 {
     /// <summary>
-    /// Test with Arial font.
+    /// Test Custom Numeric UpDown Control with Arial font.
     /// </summary>
     public partial class Form1 : Form
     {
@@ -24,6 +24,12 @@ namespace WinForms_NumUpDown
         {
             var fontsize = (float)this.customUpDown1.Value;
             this.Font = new Font(this.Font.FontFamily, fontsize);
+        }
+
+        private void customUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            this.customUpDown1.RepeatDelayMs = this.customUpDown2.Value;
+            this.customUpDown2.RepeatDelayMs = this.customUpDown2.Value;
         }
     }
 }
