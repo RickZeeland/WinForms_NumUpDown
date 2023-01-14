@@ -14,19 +14,21 @@ namespace WinForms_NumUpDown
     {
         public event EventHandler ValueChanged;
 
+        [System.ComponentModel.Description("Gets or sets the default value"), System.ComponentModel.Category("CustomUpDown")]
         public int Value { get; set; }
 
+        [System.ComponentModel.Description("Gets or sets the Maximum int value"), System.ComponentModel.Category("CustomUpDown")]
         public int Maximum { get; set; } = 100;
 
+        [System.ComponentModel.Description("Gets or sets the Minimum int value"), System.ComponentModel.Category("CustomUpDown")]
         public int Minimum { get; set; } = 0;
 
-        /// <summary>
-        /// Button repeat delay in milliseconds.
-        /// </summary>
+        [System.ComponentModel.Description("Gets or sets the button repeat delay in milliseconds"), System.ComponentModel.Category("CustomUpDown")]
         public int RepeatDelayMs { get; set; } = 100;
 
         public enum ButtonDisplay { Arrows, PlusMinus };
 
+        [System.ComponentModel.Description("Gets or sets the Button display style"), System.ComponentModel.Category("CustomUpDown")]
         public ButtonDisplay ButtonStyle { get; set; }
 
         private Label label1;
