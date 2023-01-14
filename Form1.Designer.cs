@@ -31,7 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.customUpDown1 = new Griffid.Customization.CustomUpDown();
+            this.customUpDown1 = new WinForms_NumUpDown.CustomUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelFontsize = new System.Windows.Forms.Label();
             this.numericUpDownFontsize = new System.Windows.Forms.NumericUpDown();
@@ -84,7 +84,7 @@
             // 
             // customUpDown1
             // 
-            this.customUpDown1.ButtonStyle = Griffid.Customization.CustomUpDown.ButtonDisplay.Arrows;
+            this.customUpDown1.ButtonStyle = CustomUpDown.ButtonDisplay.Arrows;
             this.customUpDown1.Location = new System.Drawing.Point(79, 20);
             this.customUpDown1.Maximum = 20;
             this.customUpDown1.Minimum = 5;
@@ -229,6 +229,6 @@
         private Label label1;
         private NumericUpDown numericUpDown1;
         private GroupBox groupBox3;
-        private Griffid.Customization.CustomUpDown customUpDown1;
+        private CustomUpDown customUpDown1;
     }
 }

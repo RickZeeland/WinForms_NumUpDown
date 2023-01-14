@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Griffid.Customization
+namespace WinForms_NumUpDown
 {
     /// <summary>
     /// Custom Numeric UpDown Control.
@@ -33,7 +33,7 @@ namespace Griffid.Customization
         /// </summary>
         protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
         {
-            height = (int)(this.Font.Size * 2) + 3;
+            height = (int)(Font.Size * 2) + 3;
             base.SetBoundsCore(x, y, width, height, specified);
         }
 
@@ -43,13 +43,13 @@ namespace Griffid.Customization
         public CustomUpDown()
         {
             textBox = new TextBox();
-            this.Value = Minimum;
-            textBox.KeyPress += this.TextBox_KeyPress;
-            this.Controls.Add(textBox);
+            Value = Minimum;
+            textBox.KeyPress += TextBox_KeyPress;
+            Controls.Add(textBox);
             buttonUp = new Button();
-            this.AddButtonUp();
+            AddButtonUp();
             buttonDown = new Button();
-            this.AddbuttonDown();
+            AddbuttonDown();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Griffid.Customization
         /// </summary>
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back));
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
 
         private void AddButtonUp()
@@ -68,8 +68,8 @@ namespace Griffid.Customization
             buttonUp.BackColor = Color.Transparent;
             buttonUp.ForeColor = Color.DarkGray;
             buttonUp.TextAlign = ContentAlignment.TopCenter;
-            buttonUp.MouseDown += this.ButtonUpClick;
-            this.Controls.Add(buttonUp);
+            buttonUp.MouseDown += ButtonUpClick;
+            Controls.Add(buttonUp);
         }
 
         private void AddbuttonDown()
@@ -80,8 +80,8 @@ namespace Griffid.Customization
             buttonDown.BackColor = Color.Transparent;
             buttonDown.ForeColor = Color.DarkGray;
             buttonDown.TextAlign = ContentAlignment.TopCenter;
-            buttonDown.MouseDown += this.ButtonDownClick;
-            this.Controls.Add(buttonDown);
+            buttonDown.MouseDown += ButtonDownClick;
+            Controls.Add(buttonDown);
         }
 
         /// <summary>
@@ -102,13 +102,13 @@ namespace Griffid.Customization
             }
 
             int buttonHeight = textBox.Height - 2;
-            textBox.Width = this.Width - (2 * buttonHeight);
+            textBox.Width = Width - 2 * buttonHeight;
             textBox.Location = new Point(0, 0);
             buttonUp.Size = new Size(buttonHeight, buttonHeight);
             buttonDown.Size = buttonUp.Size;
-            buttonUp.Location = new Point(this.Width - (2 * buttonHeight), 0);
-            buttonDown.Location = new Point(this.Width - buttonHeight, 0);
-            textBox.Text = this.Value.ToString();
+            buttonUp.Location = new Point(Width - 2 * buttonHeight, 0);
+            buttonDown.Location = new Point(Width - buttonHeight, 0);
+            textBox.Text = Value.ToString();
             base.OnPaint(e);
         }
 
@@ -124,7 +124,7 @@ namespace Griffid.Customization
 
             while ((MouseButtons & MouseButtons.Left) != 0)
             {
-                if (this.AddValue(1))
+                if (AddValue(1))
                 {
                     Application.DoEvents();
                     Thread.Sleep(delayMs);
@@ -149,7 +149,7 @@ namespace Griffid.Customization
 
             while ((MouseButtons & MouseButtons.Left) != 0)
             {
-                if (this.AddValue(-1))
+                if (AddValue(-1))
                 {
                     Application.DoEvents();
                     Thread.Sleep(delayMs);
@@ -168,32 +168,32 @@ namespace Griffid.Customization
         /// <param name="value">The value</param>
         private bool AddValue(int value)
         {
-            if (string.IsNullOrEmpty(this.textBox.Text))
+            if (string.IsNullOrEmpty(textBox.Text))
             {
 
-                this.Value = this.Minimum;
-                this.textBox.Text = this.Value.ToString(); 
+                Value = Minimum;
+                textBox.Text = Value.ToString();
                 return false;
             }
 
-            int num = this.Value + value;
+            int num = Value + value;
 
             if (num < Minimum)
             {
-                this.Value = this.Minimum;
+                Value = Minimum;
             }
             else if (num > Maximum)
             {
-                this.Value = this.Maximum;
+                Value = Maximum;
             }
             else
             {
-                this.Value = num;
-                this.textBox.Text = this.Value.ToString();
+                Value = num;
+                textBox.Text = Value.ToString();
                 return true;
             }
 
-            this.textBox.Text = this.Value.ToString();
+            textBox.Text = Value.ToString();
             return false;
         }
     }
