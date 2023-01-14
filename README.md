@@ -6,3 +6,11 @@
 A Custom Flat-style Numeric UpDown Control for .NET 6  
 
 <img src="Screendumps/Form1.png" alt="main window">
+
+Features:
+
+- Optional label
+- Repeat buttons
+- Arrow or +- style
+
+Note that the repeat button functionality is implemented without using a Timer.
