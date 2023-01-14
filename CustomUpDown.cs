@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -7,6 +8,7 @@ namespace WinForms_NumUpDown
 {
     /// <summary>
     /// Custom Numeric UpDown Control.
+    /// Button color can be set with ForeColor and BackColor.
     /// </summary>
     public class CustomUpDown : Control
     {
@@ -17,6 +19,11 @@ namespace WinForms_NumUpDown
         public int Maximum { get; set; } = 100;
 
         public int Minimum { get; set; } = 0;
+
+        /// <summary>
+        /// Button repeat delay in milliseconds.
+        /// </summary>
+        public int RepeatDelayMs { get; set; } = 100;
 
         public enum ButtonDisplay { Arrows, PlusMinus };
 
@@ -33,7 +40,8 @@ namespace WinForms_NumUpDown
         /// </summary>
         protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
         {
-            height = (int)(Font.Size * 2) + 3;
+            Debug.Print($"Font Size = {Font.Size}  Height = {Font.Height}");
+            height = Font.Height + 8;
             base.SetBoundsCore(x, y, width, height, specified);
         }
 
@@ -42,6 +50,7 @@ namespace WinForms_NumUpDown
         /// </summary>
         public CustomUpDown()
         {
+            ForeColor = Color.Gray;
             textBox = new TextBox();
             Value = Minimum;
             textBox.KeyPress += TextBox_KeyPress;
@@ -65,8 +74,6 @@ namespace WinForms_NumUpDown
             buttonUp.Name = "ButtonUp";
             buttonUp.FlatStyle = FlatStyle.Flat;
             buttonUp.FlatAppearance.BorderSize = 0;
-            buttonUp.BackColor = Color.Transparent;
-            buttonUp.ForeColor = Color.DarkGray;
             buttonUp.TextAlign = ContentAlignment.TopCenter;
             buttonUp.MouseDown += ButtonUpClick;
             Controls.Add(buttonUp);
@@ -77,8 +84,6 @@ namespace WinForms_NumUpDown
             buttonDown.Name = "buttonDown";
             buttonDown.FlatStyle = FlatStyle.Flat;
             buttonDown.FlatAppearance.BorderSize = 0;
-            buttonDown.BackColor = Color.Transparent;
-            buttonDown.ForeColor = Color.DarkGray;
             buttonDown.TextAlign = ContentAlignment.TopCenter;
             buttonDown.MouseDown += ButtonDownClick;
             Controls.Add(buttonDown);
@@ -120,7 +125,7 @@ namespace WinForms_NumUpDown
         /// <param name="e">The event args.</param>
         private void ButtonUpClick(object sender, MouseEventArgs e)
         {
-            int delayMs = 300;
+            int delayMs = 300;      // Initial delay before repeating
 
             while ((MouseButtons & MouseButtons.Left) != 0)
             {
@@ -128,13 +133,13 @@ namespace WinForms_NumUpDown
                 {
                     Application.DoEvents();
                     Thread.Sleep(delayMs);
-                    delayMs = 100;
+                    delayMs = RepeatDelayMs;
                 }
 
                 Application.DoEvents();
             }
 
-            ValueChanged?.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -153,13 +158,13 @@ namespace WinForms_NumUpDown
                 {
                     Application.DoEvents();
                     Thread.Sleep(delayMs);
-                    delayMs = 100;
+                    delayMs = RepeatDelayMs;
                 }
 
                 Application.DoEvents();
             }
 
-            ValueChanged?.Invoke(this, EventArgs.Empty);
+            ValueChanged?.Invoke(this, e);
         }
 
         /// <summary>

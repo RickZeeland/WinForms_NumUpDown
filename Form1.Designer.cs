@@ -86,12 +86,14 @@ namespace WinForms_NumUpDown
             // 
             // customUpDown1
             // 
-            this.customUpDown1.ButtonStyle = CustomUpDown.ButtonDisplay.Arrows;
-            this.customUpDown1.Location = new System.Drawing.Point(79, 20);
-            this.customUpDown1.Maximum = 20;
+            this.customUpDown1.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
+            this.customUpDown1.ForeColor = System.Drawing.Color.Blue;
+            this.customUpDown1.Location = new System.Drawing.Point(95, 20);
+            this.customUpDown1.Maximum = 30;
             this.customUpDown1.Minimum = 5;
             this.customUpDown1.Name = "customUpDown1";
-            this.customUpDown1.Size = new System.Drawing.Size(91, 21);
+            this.customUpDown1.RepeatDelayMs = 100;
+            this.customUpDown1.Size = new System.Drawing.Size(75, 24);
             this.customUpDown1.TabIndex = 0;
             this.customUpDown1.Text = "customUpDown1";
             this.customUpDown1.Value = 9;
