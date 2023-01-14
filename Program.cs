@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace WinForms_NumUpDown
 {
     internal static class Program

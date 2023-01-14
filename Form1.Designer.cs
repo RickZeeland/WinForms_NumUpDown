@@ -1,4 +1,6 @@
-﻿namespace WinForms_NumUpDown
+﻿using System.Windows.Forms;
+
+namespace WinForms_NumUpDown
 {
     partial class Form1
     {
