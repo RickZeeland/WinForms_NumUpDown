@@ -9,7 +9,6 @@ namespace WinForms_NumUpDown
 {
     /// <summary>
     /// Custom Numeric UpDown Control.
-    /// Button color can be set with ForeColor and BackColor.
     /// </summary>
     public class CustomUpDown : Control
     {
@@ -41,10 +40,10 @@ namespace WinForms_NumUpDown
         [Category("CustomUpDown"), Description("Gets or sets the decimal places")]
         public int DecimalPlaces { get; set; } = 0;
 
-        [Category("CustomUpDown"), Description("Gets or sets the Maximum int value")]
+        [Category("CustomUpDown"), Description("Gets or sets the Maximum value")]
         public decimal Maximum { get; set; } = 100;
 
-        [Category("CustomUpDown"), Description("Gets or sets the Minimum int value")]
+        [Category("CustomUpDown"), Description("Gets or sets the Minimum value")]
         public decimal Minimum { get; set; } = 0;
 
         [Category("CustomUpDown"), Description("Gets or sets the button repeat delay in milliseconds")]
@@ -135,15 +134,15 @@ namespace WinForms_NumUpDown
 
         private decimal valueLocal;
 
-        /// <summary>
-        /// Control height is determined by Font size.
-        /// </summary>
-        protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
-        {
-            Debug.Print($"Font Size = {Font.Size}  Height = {Font.Height}");
-            height = Font.Height + 8;
-            base.SetBoundsCore(x, y, width, height, specified);
-        }
+        ///// <summary>
+        ///// Control height is determined by Font size.
+        ///// </summary>
+        //protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
+        //{
+        //    Debug.Print($"Font Size = {Font.Size}  Height = {Font.Height}");
+        //    height = Font.Height + 8;
+        //    base.SetBoundsCore(x, y, width, height, specified);
+        //}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomUpDown"/> class.
