@@ -16,7 +16,7 @@ namespace WinForms_NumUpDown
         public event EventHandler ValueChanged;
 
         [Category("CustomUpDown"), Description("Gets or sets the default value"), RefreshProperties(RefreshProperties.Repaint)]
-        public int Value 
+        public decimal Value 
         {
             get
             {
@@ -25,16 +25,27 @@ namespace WinForms_NumUpDown
 
             set
             {
-                valueLocal = value;
+                if (DecimalPlaces > 0)
+                {
+                    valueLocal = Math.Round(value, DecimalPlaces);
+                }
+                else
+                {
+                    valueLocal = value;
+                }
+
                 Invalidate();
             }
         }
 
+        [Category("CustomUpDown"), Description("Gets or sets the decimal places")]
+        public int DecimalPlaces { get; set; } = 0;
+
         [Category("CustomUpDown"), Description("Gets or sets the Maximum int value")]
-        public int Maximum { get; set; } = 100;
+        public decimal Maximum { get; set; } = 100;
 
         [Category("CustomUpDown"), Description("Gets or sets the Minimum int value")]
-        public int Minimum { get; set; } = 0;
+        public decimal Minimum { get; set; } = 0;
 
         [Category("CustomUpDown"), Description("Gets or sets the button repeat delay in milliseconds")]
         public int RepeatDelayMs { get; set; } = 100;
@@ -80,7 +91,7 @@ namespace WinForms_NumUpDown
 
         private Button buttonDown;
 
-        private int valueLocal;
+        private decimal valueLocal;
 
         /// <summary>
         /// Control height is determined by Font size.
@@ -124,6 +135,10 @@ namespace WinForms_NumUpDown
             else if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back)
             {
                 e.Handled = false;
+            }
+            else if (e.KeyChar == '.' || e.KeyChar == ',')
+            {
+                e.Handled = !(DecimalPlaces > 0);
             }
             else
             {
@@ -256,7 +271,7 @@ namespace WinForms_NumUpDown
                 return false;
             }
 
-            Value = Convert.ToInt32(textBox.Text) + value;
+            Value = Math.Round(Convert.ToDecimal(textBox.Text) + value, DecimalPlaces);
 
             if (Value < Minimum)
             {

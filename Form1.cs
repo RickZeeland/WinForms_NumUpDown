@@ -28,8 +28,8 @@ namespace WinForms_NumUpDown
 
         private void customUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            this.customUpDown1.RepeatDelayMs = this.customUpDown2.Value;
-            this.customUpDown2.RepeatDelayMs = this.customUpDown2.Value;
+            this.customUpDown1.RepeatDelayMs = (int)this.customUpDown2.Value;
+            this.customUpDown2.RepeatDelayMs = (int)this.customUpDown2.Value;
         }
     }
 }
