@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
@@ -14,22 +15,50 @@ namespace WinForms_NumUpDown
     {
         public event EventHandler ValueChanged;
 
-        [System.ComponentModel.Description("Gets or sets the default value"), System.ComponentModel.Category("CustomUpDown")]
+        [Category("CustomUpDown"), Description("Gets or sets the default value")]
         public int Value { get; set; }
 
-        [System.ComponentModel.Description("Gets or sets the Maximum int value"), System.ComponentModel.Category("CustomUpDown")]
+        [Category("CustomUpDown"), Description("Gets or sets the Maximum int value")]
         public int Maximum { get; set; } = 100;
 
-        [System.ComponentModel.Description("Gets or sets the Minimum int value"), System.ComponentModel.Category("CustomUpDown")]
+        [Category("CustomUpDown"), Description("Gets or sets the Minimum int value")]
         public int Minimum { get; set; } = 0;
 
-        [System.ComponentModel.Description("Gets or sets the button repeat delay in milliseconds"), System.ComponentModel.Category("CustomUpDown")]
+        [Category("CustomUpDown"), Description("Gets or sets the button repeat delay in milliseconds")]
         public int RepeatDelayMs { get; set; } = 100;
 
         public enum ButtonDisplay { Arrows, PlusMinus };
 
-        [System.ComponentModel.Description("Gets or sets the Button display style"), System.ComponentModel.Category("CustomUpDown")]
-        public ButtonDisplay ButtonStyle { get; set; }
+        [Category("CustomUpDown"), Description("Gets or sets the Button display style"), RefreshProperties(RefreshProperties.Repaint)]
+        public ButtonDisplay ButtonStyle
+        {
+            get { return buttonstyle; }
+
+            set 
+            { 
+                buttonstyle = value; 
+                Invalidate();
+            }
+        }
+
+        [Category("CustomUpDown"), Description("Gets or sets the optional label text"), RefreshProperties(RefreshProperties.Repaint)]
+        public new string Text
+        {
+            get { return base.Text; }
+
+            set
+            {
+                if (!value.StartsWith("customUpDown"))      // Ignore default designer text
+                {
+                    label1.Text = value;
+                    base.Text = value;  
+                }
+
+                Invalidate();
+            }
+        }
+
+        private ButtonDisplay buttonstyle;
 
         private Label label1;
 
@@ -56,7 +85,6 @@ namespace WinForms_NumUpDown
         {
             ForeColor = Color.Gray;
             label1 = new Label();
-            label1.Text = Text;
             Controls.Add(label1);
             textBox = new TextBox();
             Value = Minimum;
@@ -75,7 +103,7 @@ namespace WinForms_NumUpDown
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                this.AddValue(0);
+                AddValue(0);
                 e.Handled = false;
                 ValueChanged?.Invoke(this, e);
             }
@@ -129,7 +157,7 @@ namespace WinForms_NumUpDown
             textBox.Text = Value.ToString();
             int buttonHeight = textBox.Height - 2;
 
-            if (string.IsNullOrEmpty(Text))
+            if (string.IsNullOrEmpty(label1.Text))
             {
                 label1.Visible = false;
                 textBox.Width = Width - 2 * buttonHeight;
@@ -138,7 +166,6 @@ namespace WinForms_NumUpDown
             else
             {
                 textBox.Width = (int)(Math.Max(3, textBox.Text.Length) * Font.Size);
-                label1.Text = Text;
                 label1.Width = Width - textBox.Width - 2 * buttonHeight;
                 label1.Location = new Point(0, 2);
                 textBox.Location = new Point(label1.Width, 0);
