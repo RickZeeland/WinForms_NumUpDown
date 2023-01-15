@@ -88,32 +88,64 @@ namespace WinForms_NumUpDown
             // 
             // customUpDown2
             // 
+            this.customUpDown2.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown2.ButtonForeColor = System.Drawing.Color.Gray;
             this.customUpDown2.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
+            this.customUpDown2.DecimalPlaces = 0;
             this.customUpDown2.ForeColor = System.Drawing.Color.Chocolate;
             this.customUpDown2.Location = new System.Drawing.Point(16, 50);
-            this.customUpDown2.Maximum = 9999;
-            this.customUpDown2.Minimum = 1;
+            this.customUpDown2.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.customUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.customUpDown2.Name = "customUpDown2";
             this.customUpDown2.RepeatDelayMs = 100;
-            this.customUpDown2.Size = new System.Drawing.Size(189, 22);
+            this.customUpDown2.Size = new System.Drawing.Size(189, 24);
             this.customUpDown2.TabIndex = 1;
             this.customUpDown2.Text = "Repeat delay in ms";
-            this.customUpDown2.Value = 100;
+            this.customUpDown2.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown2.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.customUpDown2.ValueChanged += new System.EventHandler(this.customUpDown2_ValueChanged);
             // 
             // customUpDown1
             // 
+            this.customUpDown1.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown1.ButtonForeColor = System.Drawing.Color.Gray;
             this.customUpDown1.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
+            this.customUpDown1.DecimalPlaces = 0;
             this.customUpDown1.ForeColor = System.Drawing.Color.Blue;
             this.customUpDown1.Location = new System.Drawing.Point(72, 20);
-            this.customUpDown1.Maximum = 30;
-            this.customUpDown1.Minimum = 5;
+            this.customUpDown1.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.customUpDown1.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.customUpDown1.Name = "customUpDown1";
             this.customUpDown1.RepeatDelayMs = 100;
-            this.customUpDown1.Size = new System.Drawing.Size(133, 22);
+            this.customUpDown1.Size = new System.Drawing.Size(133, 24);
             this.customUpDown1.TabIndex = 0;
             this.customUpDown1.Text = "Font size";
-            this.customUpDown1.Value = 9;
+            this.customUpDown1.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown1.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
             this.customUpDown1.ValueChanged += new System.EventHandler(this.customUpDown1_ValueChanged);
             // 
             // groupBox1

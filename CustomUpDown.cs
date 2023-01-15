@@ -50,6 +50,42 @@ namespace WinForms_NumUpDown
         [Category("CustomUpDown"), Description("Gets or sets the button repeat delay in milliseconds")]
         public int RepeatDelayMs { get; set; } = 100;
 
+        [Category("CustomUpDown"), Description("Gets or sets the button fore color"), RefreshProperties(RefreshProperties.Repaint)]
+        public Color ButtonForeColor
+        {
+            get { return buttonForeColor; }
+
+            set
+            {
+                buttonForeColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("CustomUpDown"), Description("Gets or sets the button back color"), RefreshProperties(RefreshProperties.Repaint)]
+        public Color ButtonBackColor
+        {
+            get { return buttonBackColor; }
+
+            set
+            {
+                buttonBackColor = value;
+                Invalidate();
+            }
+        }
+
+        [Category("CustomUpDown"), Description("Gets or sets the textbox back color"), RefreshProperties(RefreshProperties.Repaint)]
+        public Color TextBackColor
+        {
+            get { return textBackColor; }
+
+            set
+            {
+                textBackColor = value;
+                Invalidate();
+            }
+        }
+
         public enum ButtonDisplay { Arrows, PlusMinus };
 
         [Category("CustomUpDown"), Description("Gets or sets the Button display style"), RefreshProperties(RefreshProperties.Repaint)]
@@ -91,6 +127,12 @@ namespace WinForms_NumUpDown
 
         private Button buttonDown;
 
+        private Color buttonForeColor;
+
+        private Color buttonBackColor;
+
+        private Color textBackColor;
+
         private decimal valueLocal;
 
         /// <summary>
@@ -108,7 +150,8 @@ namespace WinForms_NumUpDown
         /// </summary>
         public CustomUpDown()
         {
-            ForeColor = Color.Gray;
+            buttonForeColor = Color.Gray;
+            textBackColor = Color.White;
             label1 = new Label();
             Controls.Add(label1);
             textBox = new TextBox();
@@ -184,7 +227,9 @@ namespace WinForms_NumUpDown
             }
 
             textBox.Text = Value.ToString();
-            int buttonHeight = textBox.Height - 2;
+            textBox.BackColor = TextBackColor;
+            textBox.ForeColor = ForeColor;
+            int buttonHeight = textBox.Height;
 
             if (string.IsNullOrEmpty(label1.Text))
             {
@@ -194,12 +239,17 @@ namespace WinForms_NumUpDown
             }
             else
             {
+                label1.BackColor = BackColor;
                 textBox.Width = (int)(Math.Max(3, textBox.Text.Length) * Font.Size);
                 label1.Width = Width - textBox.Width - 2 * buttonHeight;
                 label1.Location = new Point(0, 2);
                 textBox.Location = new Point(label1.Width, 0);
             }
 
+            buttonUp.ForeColor = ButtonForeColor;
+            buttonDown.ForeColor = ButtonForeColor;
+            buttonUp.BackColor = ButtonBackColor;
+            buttonDown.BackColor = ButtonBackColor;
             buttonUp.Size = new Size(buttonHeight, buttonHeight);
             buttonDown.Size = buttonUp.Size;
             buttonUp.Location = new Point(Width - 2 * buttonHeight, 0);
