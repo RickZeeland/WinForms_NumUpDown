@@ -15,8 +15,20 @@ namespace WinForms_NumUpDown
     {
         public event EventHandler ValueChanged;
 
-        [Category("CustomUpDown"), Description("Gets or sets the default value")]
-        public int Value { get; set; }
+        [Category("CustomUpDown"), Description("Gets or sets the default value"), RefreshProperties(RefreshProperties.Repaint)]
+        public int Value 
+        {
+            get
+            {
+                return valueLocal;
+            }
+
+            set
+            {
+                valueLocal = value;
+                Invalidate();
+            }
+        }
 
         [Category("CustomUpDown"), Description("Gets or sets the Maximum int value")]
         public int Maximum { get; set; } = 100;
@@ -67,6 +79,8 @@ namespace WinForms_NumUpDown
         private Button buttonUp;
 
         private Button buttonDown;
+
+        private int valueLocal;
 
         /// <summary>
         /// Control height is determined by Font size.
