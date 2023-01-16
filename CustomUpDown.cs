@@ -336,20 +336,23 @@ namespace WinForms_NumUpDown
                 return false;
             }
 
-            Value = Math.Round(Convert.ToDecimal(textBox.Text) + value, DecimalPlaces);
+            if (decimal.TryParse(textBox.Text, out var result))
+            {
+                Value = Math.Round(result + value, DecimalPlaces);
 
-            if (Value < Minimum)
-            {
-                Value = Minimum;
-            }
-            else if (Value > Maximum)
-            {
-                Value = Maximum;
-            }
-            else
-            {
-                textBox.Text = Value.ToString();
-                return true;
+                if (Value < Minimum)
+                {
+                    Value = Minimum;
+                }
+                else if (Value > Maximum)
+                {
+                    Value = Maximum;
+                }
+                else
+                {
+                    textBox.Text = Value.ToString();
+                    return true;
+                }
             }
 
             textBox.Text = Value.ToString();
