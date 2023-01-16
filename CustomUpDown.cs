@@ -24,21 +24,24 @@ namespace WinForms_NumUpDown
 
             set
             {
-                if (DecimalPlaces > 0)
-                {
-                    valueLocal = Math.Round(value, DecimalPlaces);
-                }
-                else
+                if (DecimalPlaces == 0)
                 {
                     valueLocal = value;
+                }
+                else if (DecimalPlaces > 0 && DecimalPlaces < 7)         // Allow max 6 decimals
+                {
+                    valueLocal = Math.Round(value, DecimalPlaces);
                 }
 
                 Invalidate();
             }
         }
 
-        [Category("CustomUpDown"), Description("Gets or sets the decimal places")]
+        [Category("CustomUpDown"), Description("Gets or sets the decimal places (max 6)")]
         public int DecimalPlaces { get; set; } = 0;
+
+        [Category("CustomUpDown"), Description("Gets or sets the increment value")]
+        public decimal Increment { get; set; } = 1;
 
         [Category("CustomUpDown"), Description("Gets or sets the Maximum value")]
         public decimal Maximum { get; set; } = 100;
@@ -268,7 +271,7 @@ namespace WinForms_NumUpDown
 
             while ((MouseButtons & MouseButtons.Left) != 0)
             {
-                if (AddValue(1))
+                if (AddValue(Increment))
                 {
                     Application.DoEvents();
                     Thread.Sleep(delayMs);
@@ -293,7 +296,7 @@ namespace WinForms_NumUpDown
 
             while ((MouseButtons & MouseButtons.Left) != 0)
             {
-                if (AddValue(-1))
+                if (AddValue(-Increment))
                 {
                     Application.DoEvents();
                     Thread.Sleep(delayMs);
@@ -310,12 +313,19 @@ namespace WinForms_NumUpDown
         /// Increment or decrement the TextBox value.
         /// </summary>
         /// <param name="value">The value</param>
-        private bool AddValue(int value)
+        private bool AddValue(decimal value)
         {
             if (string.IsNullOrEmpty(textBox.Text))
             {
 
                 Value = Minimum;
+                textBox.Text = Value.ToString();
+                return false;
+            }
+            else if (textBox.TextLength > 25)
+            {
+                Debug.Print("Too many significant digits for decimal");
+                Value = Maximum;
                 textBox.Text = Value.ToString();
                 return false;
             }
