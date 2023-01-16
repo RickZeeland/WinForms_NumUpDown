@@ -89,10 +89,15 @@ namespace WinForms_NumUpDown
             // customUpDown2
             // 
             this.customUpDown2.ButtonBackColor = System.Drawing.Color.Empty;
-            this.customUpDown2.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown2.ButtonForeColor = System.Drawing.Color.Chocolate;
             this.customUpDown2.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
             this.customUpDown2.DecimalPlaces = 0;
             this.customUpDown2.ForeColor = System.Drawing.Color.Chocolate;
+            this.customUpDown2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.customUpDown2.Location = new System.Drawing.Point(16, 50);
             this.customUpDown2.Maximum = new decimal(new int[] {
             9999,
@@ -120,10 +125,15 @@ namespace WinForms_NumUpDown
             // customUpDown1
             // 
             this.customUpDown1.ButtonBackColor = System.Drawing.Color.Empty;
-            this.customUpDown1.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown1.ButtonForeColor = System.Drawing.Color.Blue;
             this.customUpDown1.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
-            this.customUpDown1.DecimalPlaces = 0;
+            this.customUpDown1.DecimalPlaces = 2;
             this.customUpDown1.ForeColor = System.Drawing.Color.Blue;
+            this.customUpDown1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.customUpDown1.Location = new System.Drawing.Point(72, 20);
             this.customUpDown1.Maximum = new decimal(new int[] {
             30,
