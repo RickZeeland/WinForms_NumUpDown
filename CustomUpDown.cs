@@ -14,7 +14,7 @@ namespace WinForms_NumUpDown
     {
         public event EventHandler ValueChanged;
 
-        [Category("CustomUpDown"), Description("Gets or sets the default value"), RefreshProperties(RefreshProperties.Repaint)]
+        [Category("CustomUpDown"), Description("Gets or sets the default value in textBox"), RefreshProperties(RefreshProperties.Repaint)]
         public decimal Value 
         {
             get
@@ -76,7 +76,7 @@ namespace WinForms_NumUpDown
             }
         }
 
-        [Category("CustomUpDown"), Description("Gets or sets the textbox back color"), RefreshProperties(RefreshProperties.Repaint)]
+        [Category("CustomUpDown"), Description("Gets or sets the textbox back color (default White), use ForeColor for the text color"), RefreshProperties(RefreshProperties.Repaint)]
         public Color TextBackColor
         {
             get { return textBackColor; }
@@ -102,7 +102,7 @@ namespace WinForms_NumUpDown
             }
         }
 
-        [Category("CustomUpDown"), Description("Gets or sets the optional label text"), RefreshProperties(RefreshProperties.Repaint)]
+        [Category("CustomUpDown"), Description("Gets or sets the optional label text (with ForeColor as the color)"), RefreshProperties(RefreshProperties.Repaint)]
         public new string Text
         {
             get { return base.Text; }
@@ -232,18 +232,19 @@ namespace WinForms_NumUpDown
             textBox.BackColor = TextBackColor;
             textBox.ForeColor = ForeColor;
             int buttonHeight = textBox.Height;
+            int buttonWidth = (int)(textBox.Height * 0.8);
 
             if (string.IsNullOrEmpty(label1.Text))
             {
                 label1.Visible = false;
-                textBox.Width = Width - 2 * buttonHeight;
+                textBox.Width = Width - 2 * buttonWidth;
                 textBox.Location = new Point(0, 0);
             }
             else
             {
                 label1.BackColor = BackColor;
                 textBox.Width = (int)(Math.Max(3, textBox.Text.Length) * Font.Size);
-                label1.Width = Width - textBox.Width - 2 * buttonHeight;
+                label1.Width = Width - textBox.Width - 2 * buttonWidth;
                 label1.Location = new Point(0, 2);
                 textBox.Location = new Point(label1.Width, 0);
             }
@@ -252,10 +253,10 @@ namespace WinForms_NumUpDown
             buttonDown.ForeColor = ButtonForeColor;
             buttonUp.BackColor = ButtonBackColor;
             buttonDown.BackColor = ButtonBackColor;
-            buttonUp.Size = new Size(buttonHeight, buttonHeight);
+            buttonUp.Size = new Size(buttonWidth, buttonHeight);
             buttonDown.Size = buttonUp.Size;
-            buttonUp.Location = new Point(Width - 2 * buttonHeight, 0);
-            buttonDown.Location = new Point(Width - buttonHeight, 0);
+            buttonUp.Location = new Point(Width - 2 * buttonWidth, 0);
+            buttonDown.Location = new Point(Width - buttonWidth, 0);
             base.OnPaint(e);
         }
 
