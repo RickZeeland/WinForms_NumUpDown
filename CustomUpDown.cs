@@ -97,7 +97,19 @@ namespace WinForms_NumUpDown
 
             set 
             { 
-                buttonstyle = value; 
+                buttonstyle = value;
+
+                if (buttonstyle == ButtonDisplay.PlusMinus)
+                {
+                    buttonUp.Text = "+";
+                    buttonDown.Text = "-";
+                }
+                else
+                {
+                    buttonUp.Text = "▲";
+                    buttonDown.Text = "▼";
+                }
+
                 Invalidate();
             }
         }
@@ -164,6 +176,9 @@ namespace WinForms_NumUpDown
             AddButtonUp();
             buttonDown = new Button();
             AddbuttonDown();
+            buttonstyle = ButtonDisplay.Arrows;
+            buttonUp.Text = "▲";
+            buttonDown.Text = "▼";
         }
 
         /// <summary>
@@ -217,17 +232,6 @@ namespace WinForms_NumUpDown
         /// <param name="e">The PaintEventArgs</param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (ButtonStyle == ButtonDisplay.PlusMinus)
-            {
-                buttonUp.Text = "+";
-                buttonDown.Text = "-";
-            }
-            else
-            {
-                buttonUp.Text = "▲";
-                buttonDown.Text = "▼";
-            }
-
             textBox.Text = Value.ToString();
             textBox.BackColor = TextBackColor;
             textBox.ForeColor = ForeColor;
@@ -242,6 +246,7 @@ namespace WinForms_NumUpDown
             }
             else
             {
+                label1.Visible = true;
                 label1.BackColor = BackColor;
                 textBox.Width = (int)(Math.Max(3, textBox.Text.Length) * Font.Size);
                 label1.Width = Width - textBox.Width - 2 * buttonWidth;
