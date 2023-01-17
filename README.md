@@ -8,7 +8,7 @@ A Custom Flat-style Numeric UpDown Control with a simple demo application writte
    
 <img src="Screendumps/Form1.png" alt="main window">
 
-##Features:
+## Features:
 
 - Optional label
 - Repeat buttons
@@ -17,7 +17,7 @@ A Custom Flat-style Numeric UpDown Control with a simple demo application writte
 
 Note that the repeat button functionality is implemented without using a Timer.
 
-##Color usage
+## Color usage
 
 <img src="Screendumps/CustomUpDown_designer.png" alt="main window">
 
