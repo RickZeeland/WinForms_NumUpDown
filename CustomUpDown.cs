@@ -124,9 +124,9 @@ namespace WinForms_NumUpDown
                 if (!value.StartsWith("customUpDown"))      // Ignore default designer text
                 {
                     label1.Text = value;
-                    base.Text = value;  
                 }
 
+                base.Text = value;
                 Invalidate();
             }
         }
@@ -134,6 +134,8 @@ namespace WinForms_NumUpDown
         private ButtonDisplay buttonstyle;
 
         private Label label1;
+
+        private bool label1Init;
 
         private TextBox textBox;
 
@@ -158,6 +160,30 @@ namespace WinForms_NumUpDown
         //    height = Font.Height + 8;
         //    base.SetBoundsCore(x, y, width, height, specified);
         //}
+
+        /// <summary>
+        /// Clear the default designer Text / resize when user enters Text.
+        /// </summary>
+        /// <param name="e">The EventArgs</param>
+        protected override void OnTextChanged(EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Text))
+            {
+                if (Text.StartsWith("customUpDown"))    // default designer Text
+                {
+                    Text = string.Empty;
+                    label1Init = true;
+                }
+                else if (label1Init)                    // User entered Text for label1
+                {
+                    int buttonWidth = (int)(textBox.Height * 0.8);
+                    Width = (int)(Text.Length * Font.Size + textBox.Width + 2 * buttonWidth);
+                    label1Init = false;
+                }
+            }
+
+            base.OnTextChanged(e);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomUpDown"/> class.
