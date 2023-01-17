@@ -43,7 +43,7 @@ namespace WinForms_NumUpDown
         [Category("CustomUpDown"), Description("Gets or sets the increment value")]
         public decimal Increment { get; set; } = 1;
 
-        [Category("CustomUpDown"), Description("Gets or sets the Maximum value")]
+        [Category("CustomUpDown"), Description("Gets or sets the Maximum value (max 25 significant digits)")]
         public decimal Maximum { get; set; } = 100;
 
         [Category("CustomUpDown"), Description("Gets or sets the Minimum value")]
