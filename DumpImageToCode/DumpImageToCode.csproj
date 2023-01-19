@@ -9,9 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DumpImageToCode\**" />
-    <EmbeddedResource Remove="DumpImageToCode\**" />
-    <None Remove="DumpImageToCode\**" />
+    <None Update="Images\minus1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\plus1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
