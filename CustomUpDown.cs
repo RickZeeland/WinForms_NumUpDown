@@ -105,8 +105,8 @@ namespace WinForms_NumUpDown
                     // Simple text buttons
                     buttonUp.Text = "+";
                     buttonDown.Text = "-";
-                    buttonUp.BackgroundImage?.Dispose();
-                    buttonDown.BackgroundImage?.Dispose();
+                    buttonUp.BackgroundImage = emptyIcon;
+                    buttonDown.BackgroundImage = emptyIcon;
                 }
                 else if (buttonstyle == ButtonDisplay.PlusMinus2)
                 {
@@ -133,8 +133,8 @@ namespace WinForms_NumUpDown
                     // Standard Arrow buttons
                     buttonUp.Text = "▲";
                     buttonDown.Text = "▼";
-                    buttonUp.BackgroundImage?.Dispose();
-                    buttonDown.BackgroundImage?.Dispose();
+                    buttonUp.BackgroundImage = emptyIcon;
+                    buttonDown.BackgroundImage = emptyIcon;
                 }
 
                 Invalidate();
@@ -191,6 +191,8 @@ namespace WinForms_NumUpDown
         private string minusIconCode = "89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 00 1A 00 00 00 1A 08 06 00 00 00 A9 4A 4C CE 00 00 00 01 73 52 47 42 00 AE CE 1C E9 00 00 00 04 67 41 4D 41 00 00 B1 8F 0B FC 61 05 00 00 00 09 70 48 59 73 00 00 0E C3 00 00 0E C3 01 C7 6F A8 64 00 00 00 38 49 44 41 54 48 4B ED CB BB 0D 00 20 0C 03 D1 EC BF 18 9F A5 C0 03 38 0D 41 82 E2 9E 74 9D 1D 00 F0 8F A9 D6 A5 BA 4A B9 43 A5 94 1B 57 4A 0D E5 0E 27 35 05 00 EF 45 6C 09 E6 4E D7 AD BA 2E B0 00 00 00 00 49 45 4E 44 AE 42 60 82";
 
         private Image minusIcon;
+
+        private Image emptyIcon;
 
         ///// <summary>
         ///// Control height is determined by Font size.
