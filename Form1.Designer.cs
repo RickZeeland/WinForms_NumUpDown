@@ -39,17 +39,17 @@ namespace WinForms_NumUpDown
             this.labelFontsize = new System.Windows.Forms.Label();
             this.numericUpDownFontsize = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.customUpDown3 = new WinForms_NumUpDown.CustomUpDown();
+            this.customUpDown4 = new WinForms_NumUpDown.CustomUpDown();
+            this.customUpDown5 = new WinForms_NumUpDown.CustomUpDown();
+            this.customUpDown6 = new WinForms_NumUpDown.CustomUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontsize)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -203,7 +203,11 @@ namespace WinForms_NumUpDown
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.customUpDown6);
+            this.tabPage2.Controls.Add(this.customUpDown5);
+            this.tabPage2.Controls.Add(this.customUpDown4);
+            this.tabPage2.Controls.Add(this.customUpDown3);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -212,48 +216,154 @@ namespace WinForms_NumUpDown
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // customUpDown3
             // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Location = new System.Drawing.Point(40, 45);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(190, 68);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.customUpDown3.BackColor = System.Drawing.Color.White;
+            this.customUpDown3.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown3.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown3.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
+            this.customUpDown3.DecimalPlaces = 0;
+            this.customUpDown3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.customUpDown3.Location = new System.Drawing.Point(60, 55);
+            this.customUpDown3.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.customUpDown3.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.customUpDown3.Name = "customUpDown3";
+            this.customUpDown3.RepeatDelayMs = 100;
+            this.customUpDown3.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown3.TabIndex = 0;
+            this.customUpDown3.Text = "Arrows";
+            this.customUpDown3.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown3.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // customUpDown4
+            // 
+            this.customUpDown4.BackColor = System.Drawing.Color.White;
+            this.customUpDown4.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown4.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown4.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus;
+            this.customUpDown4.DecimalPlaces = 0;
+            this.customUpDown4.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.customUpDown4.Location = new System.Drawing.Point(60, 84);
+            this.customUpDown4.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.customUpDown4.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.customUpDown4.Name = "customUpDown4";
+            this.customUpDown4.RepeatDelayMs = 100;
+            this.customUpDown4.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown4.TabIndex = 1;
+            this.customUpDown4.Text = "PlusMinus";
+            this.customUpDown4.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown4.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // customUpDown5
+            // 
+            this.customUpDown5.BackColor = System.Drawing.Color.White;
+            this.customUpDown5.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown5.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown5.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus2;
+            this.customUpDown5.DecimalPlaces = 0;
+            this.customUpDown5.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.customUpDown5.Location = new System.Drawing.Point(60, 113);
+            this.customUpDown5.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.customUpDown5.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.customUpDown5.Name = "customUpDown5";
+            this.customUpDown5.RepeatDelayMs = 100;
+            this.customUpDown5.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown5.TabIndex = 2;
+            this.customUpDown5.Text = "PlusMinus2";
+            this.customUpDown5.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown5.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // customUpDown6
+            // 
+            this.customUpDown6.BackColor = System.Drawing.Color.White;
+            this.customUpDown6.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown6.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown6.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus3;
+            this.customUpDown6.DecimalPlaces = 0;
+            this.customUpDown6.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.customUpDown6.Location = new System.Drawing.Point(60, 142);
+            this.customUpDown6.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.customUpDown6.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.customUpDown6.Name = "customUpDown6";
+            this.customUpDown6.RepeatDelayMs = 100;
+            this.customUpDown6.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown6.TabIndex = 3;
+            this.customUpDown6.Text = "PlusMinus3";
+            this.customUpDown6.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown6.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 31);
+            this.label1.Location = new System.Drawing.Point(25, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Font size";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(110, 29);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 21);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDownFontsize_ValueChanged);
+            this.label1.Size = new System.Drawing.Size(75, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "ButtonStyles";
             // 
             // Form1
             // 
@@ -273,9 +383,7 @@ namespace WinForms_NumUpDown
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontsize)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -288,11 +396,13 @@ namespace WinForms_NumUpDown
         private NumericUpDown numericUpDownFontsize;
         private TabPage tabPage2;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Label label1;
-        private NumericUpDown numericUpDown1;
         private GroupBox groupBox3;
         private CustomUpDown customUpDown1;
         private CustomUpDown customUpDown2;
+        private Label label1;
+        private CustomUpDown customUpDown6;
+        private CustomUpDown customUpDown5;
+        private CustomUpDown customUpDown4;
+        private CustomUpDown customUpDown3;
     }
 }
