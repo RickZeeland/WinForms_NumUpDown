@@ -22,7 +22,11 @@ More information about different types of custom Controls can be found here: [Ty
 
 Note that the repeat button functionality is implemented without using a Timer.
 
+## Button styles
+
+<img src="Screendumps/ButtonStyles.png" alt="Button styles">
+
 ## Color usage
 
-<img src="Screendumps/CustomUpDown_designer.png" alt="main window">
+<img src="Screendumps/CustomUpDown_designer.png" alt="Designer">
 
