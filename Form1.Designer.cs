@@ -32,6 +32,7 @@ namespace WinForms_NumUpDown
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonDisable = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.customUpDown2 = new WinForms_NumUpDown.CustomUpDown();
             this.customUpDown1 = new WinForms_NumUpDown.CustomUpDown();
@@ -39,11 +40,11 @@ namespace WinForms_NumUpDown
             this.labelFontsize = new System.Windows.Forms.Label();
             this.numericUpDownFontsize = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.customUpDown3 = new WinForms_NumUpDown.CustomUpDown();
-            this.customUpDown4 = new WinForms_NumUpDown.CustomUpDown();
-            this.customUpDown5 = new WinForms_NumUpDown.CustomUpDown();
-            this.customUpDown6 = new WinForms_NumUpDown.CustomUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.customUpDown6 = new WinForms_NumUpDown.CustomUpDown();
+            this.customUpDown5 = new WinForms_NumUpDown.CustomUpDown();
+            this.customUpDown4 = new WinForms_NumUpDown.CustomUpDown();
+            this.customUpDown3 = new WinForms_NumUpDown.CustomUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -60,20 +61,31 @@ namespace WinForms_NumUpDown
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(333, 243);
+            this.tabControl1.Size = new System.Drawing.Size(325, 277);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.buttonDisable);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(325, 215);
+            this.tabPage1.Size = new System.Drawing.Size(317, 249);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // buttonDisable
+            // 
+            this.buttonDisable.Location = new System.Drawing.Point(210, 212);
+            this.buttonDisable.Name = "buttonDisable";
+            this.buttonDisable.Size = new System.Drawing.Size(75, 23);
+            this.buttonDisable.TabIndex = 1;
+            this.buttonDisable.Text = "Disable";
+            this.buttonDisable.UseVisualStyleBackColor = true;
+            this.buttonDisable.Click += new System.EventHandler(this.buttonDisable_Click);
             // 
             // groupBox3
             // 
@@ -211,76 +223,50 @@ namespace WinForms_NumUpDown
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(325, 215);
+            this.tabPage2.Size = new System.Drawing.Size(317, 263);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // customUpDown3
+            // label1
             // 
-            this.customUpDown3.BackColor = System.Drawing.Color.White;
-            this.customUpDown3.ButtonBackColor = System.Drawing.Color.Empty;
-            this.customUpDown3.ButtonForeColor = System.Drawing.Color.Gray;
-            this.customUpDown3.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
-            this.customUpDown3.DecimalPlaces = 0;
-            this.customUpDown3.Increment = new decimal(new int[] {
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "ButtonStyles";
+            // 
+            // customUpDown6
+            // 
+            this.customUpDown6.BackColor = System.Drawing.Color.White;
+            this.customUpDown6.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown6.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown6.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus3;
+            this.customUpDown6.DecimalPlaces = 0;
+            this.customUpDown6.Increment = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.customUpDown3.Location = new System.Drawing.Point(60, 55);
-            this.customUpDown3.Maximum = new decimal(new int[] {
+            this.customUpDown6.Location = new System.Drawing.Point(60, 142);
+            this.customUpDown6.Maximum = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.customUpDown3.Minimum = new decimal(new int[] {
+            this.customUpDown6.Minimum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.customUpDown3.Name = "customUpDown3";
-            this.customUpDown3.RepeatDelayMs = 100;
-            this.customUpDown3.Size = new System.Drawing.Size(164, 23);
-            this.customUpDown3.TabIndex = 0;
-            this.customUpDown3.Text = "Arrows";
-            this.customUpDown3.TextBackColor = System.Drawing.Color.White;
-            this.customUpDown3.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // customUpDown4
-            // 
-            this.customUpDown4.BackColor = System.Drawing.Color.White;
-            this.customUpDown4.ButtonBackColor = System.Drawing.Color.Empty;
-            this.customUpDown4.ButtonForeColor = System.Drawing.Color.Gray;
-            this.customUpDown4.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus;
-            this.customUpDown4.DecimalPlaces = 0;
-            this.customUpDown4.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.customUpDown4.Location = new System.Drawing.Point(60, 84);
-            this.customUpDown4.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.customUpDown4.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.customUpDown4.Name = "customUpDown4";
-            this.customUpDown4.RepeatDelayMs = 100;
-            this.customUpDown4.Size = new System.Drawing.Size(164, 23);
-            this.customUpDown4.TabIndex = 1;
-            this.customUpDown4.Text = "PlusMinus";
-            this.customUpDown4.TextBackColor = System.Drawing.Color.White;
-            this.customUpDown4.Value = new decimal(new int[] {
+            this.customUpDown6.Name = "customUpDown6";
+            this.customUpDown6.RepeatDelayMs = 100;
+            this.customUpDown6.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown6.TabIndex = 3;
+            this.customUpDown6.Text = "PlusMinus3";
+            this.customUpDown6.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown6.Value = new decimal(new int[] {
             0,
             0,
             0,
@@ -321,56 +307,82 @@ namespace WinForms_NumUpDown
             0,
             0});
             // 
-            // customUpDown6
+            // customUpDown4
             // 
-            this.customUpDown6.BackColor = System.Drawing.Color.White;
-            this.customUpDown6.ButtonBackColor = System.Drawing.Color.Empty;
-            this.customUpDown6.ButtonForeColor = System.Drawing.Color.Gray;
-            this.customUpDown6.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus3;
-            this.customUpDown6.DecimalPlaces = 0;
-            this.customUpDown6.Increment = new decimal(new int[] {
+            this.customUpDown4.BackColor = System.Drawing.Color.White;
+            this.customUpDown4.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown4.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown4.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.PlusMinus;
+            this.customUpDown4.DecimalPlaces = 0;
+            this.customUpDown4.Increment = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.customUpDown6.Location = new System.Drawing.Point(60, 142);
-            this.customUpDown6.Maximum = new decimal(new int[] {
+            this.customUpDown4.Location = new System.Drawing.Point(60, 84);
+            this.customUpDown4.Maximum = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.customUpDown6.Minimum = new decimal(new int[] {
+            this.customUpDown4.Minimum = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.customUpDown6.Name = "customUpDown6";
-            this.customUpDown6.RepeatDelayMs = 100;
-            this.customUpDown6.Size = new System.Drawing.Size(164, 23);
-            this.customUpDown6.TabIndex = 3;
-            this.customUpDown6.Text = "PlusMinus3";
-            this.customUpDown6.TextBackColor = System.Drawing.Color.White;
-            this.customUpDown6.Value = new decimal(new int[] {
+            this.customUpDown4.Name = "customUpDown4";
+            this.customUpDown4.RepeatDelayMs = 100;
+            this.customUpDown4.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown4.TabIndex = 1;
+            this.customUpDown4.Text = "PlusMinus";
+            this.customUpDown4.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown4.Value = new decimal(new int[] {
             0,
             0,
             0,
             0});
             // 
-            // label1
+            // customUpDown3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "ButtonStyles";
+            this.customUpDown3.BackColor = System.Drawing.Color.White;
+            this.customUpDown3.ButtonBackColor = System.Drawing.Color.Empty;
+            this.customUpDown3.ButtonForeColor = System.Drawing.Color.Gray;
+            this.customUpDown3.ButtonStyle = WinForms_NumUpDown.CustomUpDown.ButtonDisplay.Arrows;
+            this.customUpDown3.DecimalPlaces = 0;
+            this.customUpDown3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.customUpDown3.Location = new System.Drawing.Point(60, 55);
+            this.customUpDown3.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.customUpDown3.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.customUpDown3.Name = "customUpDown3";
+            this.customUpDown3.RepeatDelayMs = 100;
+            this.customUpDown3.Size = new System.Drawing.Size(164, 23);
+            this.customUpDown3.TabIndex = 0;
+            this.customUpDown3.Text = "Arrows";
+            this.customUpDown3.TextBackColor = System.Drawing.Color.White;
+            this.customUpDown3.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(333, 243);
+            this.ClientSize = new System.Drawing.Size(325, 277);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "Form1";
@@ -404,5 +416,6 @@ namespace WinForms_NumUpDown
         private CustomUpDown customUpDown5;
         private CustomUpDown customUpDown4;
         private CustomUpDown customUpDown3;
+        private Button buttonDisable;
     }
 }

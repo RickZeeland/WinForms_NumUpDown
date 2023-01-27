@@ -31,5 +31,14 @@ namespace WinForms_NumUpDown
             this.customUpDown1.RepeatDelayMs = (int)this.customUpDown2.Value;
             this.customUpDown2.RepeatDelayMs = (int)this.customUpDown2.Value;
         }
+
+        /// <summary>
+        /// Toggle the enabled state of the groupbox with the custom NumUpDown controls.
+        /// </summary>
+        private void buttonDisable_Click(object sender, EventArgs e)
+        {
+            this.groupBox3.Enabled = !this.groupBox3.Enabled;
+            this.buttonDisable.Text = this.groupBox3.Enabled ? "Disable" : "Enable";
+        }
     }
 }
