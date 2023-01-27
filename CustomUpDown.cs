@@ -10,6 +10,8 @@ namespace WinForms_NumUpDown
 {
     /// <summary>
     /// Custom Numeric UpDown Control.
+    /// Note: the Directory.Build.props file is used for versioning in .NET Core and is not needed for .NET 4.8. 
+    /// Also see: https://www.codeproject.com/Tips/1231820/NET-Core-Versioning-Demystified
     /// </summary>
     public class CustomUpDown : Control
     {
